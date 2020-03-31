@@ -34,7 +34,7 @@ def main():
         # Get data (new cases) for the day
         cases_today = soup.find("div", class_="maincounter-number").find("span").contents[0]
         #Add data to CSV
-        addToCSV(cases_today)
+        addToCSV(cases_today, soup)
 
     else:
         print(cTime)
@@ -58,10 +58,10 @@ def getNewUpdateDate(parsedHTML):
     # Slice String to get just date
     return date_raw[14:-11]
 
-def addToCSV(data):
+def addToCSV(data, parsedHTML):
     with open('covid19_malaysia.csv', 'a', newline='') as file:
         writer = csv.writer(file, delimiter='|')
-        writer.writerow([getNewUpdateDate(), data])
+        writer.writerow([getNewUpdateDate(parsedHTML), data])
 
 # Program is scheduled to run every hour
 schedule.every(1).minutes.do(main)

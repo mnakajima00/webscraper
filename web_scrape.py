@@ -5,6 +5,8 @@ from datetime import datetime
 import csv
 from bs4 import BeautifulSoup
 
+print("New Hello!")
+
 # Main function
 def main():
     # BeautifulSoup. Get website and parse to HTML.

@@ -64,7 +64,7 @@ def addToCSV(data):
         writer.writerow([getNewUpdateDate(), data])
 
 # Program is scheduled to run every hour
-schedule.every(1).hour.do(main)
+schedule.every(1).minutes.do(main)
 while True:
     schedule.run_pending()
     time.sleep(1)
